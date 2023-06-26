@@ -1,3 +1,7 @@
-export default function SignIn(){
-    return <h1>SignIn</h1>
+import SignInForm from "./SignInForm.tsx";
+
+export default function SignIn() {
+    return <main className="main bg-dark">
+            <SignInForm/>
+    </main>
 }

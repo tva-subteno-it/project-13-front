@@ -5,8 +5,8 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Home from "./pages/home";
 import Root from "./components/Root";
 import SignIn from "./pages/sign-in";
-import User from "./pages/user";
-import NotFound from "./pages/404/404.tsx";
+import Transactions from "./pages/transactions";
+import NotFound from "./pages/404";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         children: [
             {path: '/', element: <Home/>},
             {path: '/sign-in', element: <SignIn/>},
-            {path: 'user', element: <User/>}
+            {path: 'transactions', element: <Transactions/>}
         ]
     }
 ])

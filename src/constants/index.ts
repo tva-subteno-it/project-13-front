@@ -19,3 +19,41 @@ export const FEATURES = [
         description: 'We use top of the line encryption to make sure your data and money is always safe.'
     }
 ]
+
+export const TRANSACTIONS = [
+    {
+        title: 'Bank savings',
+        number_of_transactions: 7253,
+        balance: 10904.52,
+        currency: 'USD',
+        description: 'Available balance'
+    },
+    {
+        title: 'Credit card',
+        number_of_transactions: 158,
+        balance: -750.28,
+        currency: 'USD',
+        description: 'Outstanding balance'
+    },
+    {
+        title: 'Investment portfolio',
+        number_of_transactions: 342,
+        balance: 250000,
+        currency: 'USD',
+        description: 'Total value'
+    },
+    {
+        title: 'Checking account',
+        number_of_transactions: 1235,
+        balance: 5089.67,
+        currency: 'USD',
+        description: 'Current balance'
+    }
+]
+
+export const SYMBOLS: {
+    [key: string]: string
+} = {
+    USD: '$',
+    EUR: '€',
+}
