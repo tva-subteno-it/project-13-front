@@ -1,3 +1,11 @@
+import Hero from "../../components/Hero";
+import Badges from "../../components/Features";
+import Footer from "../../components/Footer";
+
 export default function Home() {
-    return <h1>Titre</h1>
+    return <main>
+        <Hero/>
+        <Badges/>
+        <Footer/>
+    </main>
 }
