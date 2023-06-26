@@ -1,3 +1,6 @@
+import {useRouteError} from 'react-router-dom'
+
 export default function NotFound() {
-    return <h1>404</h1>
+    const error = useRouteError()
+    return (<div><h1>{error.status}</h1><p>{error.data}</p></div>)
 }

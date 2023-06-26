@@ -8,6 +8,6 @@ export default function Transactions() {
             <button className="edit-button">Edit Name</button>
         </div>
         <h2 className="sr-only">Accounts</h2>
-        {TRANSACTIONS.map(data => <Transaction {...data}/>)}
+        {TRANSACTIONS.map(data => <Transaction {...data} key={data.title}/>)}
     </main>
 }

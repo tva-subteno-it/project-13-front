@@ -57,3 +57,10 @@ export const SYMBOLS: {
     USD: '$',
     EUR: '€',
 }
+
+export const ROUTES = {
+    HOME: '/',
+    LOGIN: '/login',
+    SIGNUP: '/signup',
+    TRANSACTIONS: '/profile',
+}

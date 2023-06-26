@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import argentBankLogo from "../../assets/argentBankLogo.png"
 import {useLocation} from "react-router-dom";
+import {ROUTES} from "../../constants";
 
 export default function Nav() {
     const location = useLocation();
@@ -15,12 +16,12 @@ export default function Nav() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
             <div>
-                <Link className="main-nav-item" to="/sign-in">
+                <Link className="main-nav-item" to={ROUTES.LOGIN}>
                     <i className="fa fa-user-circle"></i>
-                    &nbsp;{location.pathname !== '/transactions' ? "Sign In" : "Tony"}
+                    &nbsp;{location.pathname !== ROUTES.TRANSACTIONS ? "Sign In" : "Tony"}
                 </Link>
                 &nbsp;
-                {location.pathname === '/transactions' && <Link className="main-nav-item" to="/">
+                {location.pathname === ROUTES.TRANSACTIONS && <Link className="main-nav-item" to="/">
                     <i className="fa fa-sign-out"></i>
                     &nbsp;Sign Out
                 </Link>}

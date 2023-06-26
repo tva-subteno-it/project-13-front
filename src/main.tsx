@@ -7,6 +7,8 @@ import Root from "./components/Root";
 import SignIn from "./pages/sign-in";
 import Transactions from "./pages/transactions";
 import NotFound from "./pages/404";
+import signInFormAction from "./components/SignIn/action.ts";
+import {ROUTES} from "./constants";
 
 const router = createBrowserRouter([
     {
@@ -14,9 +16,11 @@ const router = createBrowserRouter([
         element: <Root/>,
         errorElement: <NotFound/>,
         children: [
-            {path: '/', element: <Home/>},
-            {path: '/sign-in', element: <SignIn/>},
-            {path: 'transactions', element: <Transactions/>}
+            {path: ROUTES.HOME, element: <Home/>},
+            {
+                path: ROUTES.LOGIN, element: <SignIn/>, action: signInFormAction
+            },
+            {path: ROUTES.TRANSACTIONS, element: <Transactions/>}
         ]
     }
 ])
