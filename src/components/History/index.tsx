@@ -1,4 +1,5 @@
-import {SYMBOLS} from "../../constants";
+import {ROUTES, SYMBOLS} from "../../constants";
+import {Link} from "react-router-dom";
 
 interface TransactionProps {
     title: string,
@@ -6,9 +7,10 @@ interface TransactionProps {
     balance: number,
     currency: string,
     description: string,
+    id: number
 }
 
-export default function Transaction({ title, number_of_transactions, balance, currency, description }: TransactionProps) {
+export default function Transaction({ title, number_of_transactions, balance, currency, description, id }: TransactionProps) {
     const symbol = SYMBOLS[currency];
     return <section className="account">
         <div className="account-content-wrapper">
@@ -17,7 +19,7 @@ export default function Transaction({ title, number_of_transactions, balance, cu
             <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
+            <Link className="transaction-button" to={`${ROUTES.TRANSACTIONS}?id=${id}`}>View transactions</Link>
         </div>
     </section>
 }
