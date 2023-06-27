@@ -11,6 +11,7 @@ import signInFormAction from "./components/SignIn/action.ts";
 import {ROUTES} from "./constants";
 import {store} from "./redux/store.ts";
 import {Provider} from "react-redux";
+import Protected from "./components/Protected";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.LOGIN, element: <SignIn/>, action: signInFormAction
             },
-            {path: ROUTES.TRANSACTIONS, element: <Transactions/>}
+            {path: ROUTES.TRANSACTIONS, element: <Protected><Transactions/></Protected>}
         ]
     }
 ])
