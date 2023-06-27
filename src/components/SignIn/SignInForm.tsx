@@ -1,25 +1,10 @@
 import {Form} from "react-router-dom"
-import {useActionData, useNavigate} from "react-router-dom"
-import {useEffect, useState} from "react";
-import {ROUTES} from "../../constants";
 
-interface DataLoader {
-    token?: string;
-    message?: string;
-    status?: number;
+interface Props {
+    error: string;
 }
 
-export default function SignInForm() {
-    const dataLoader = useActionData() as DataLoader
-    const navigate = useNavigate()
-    const [error, setError] = useState('')
-    useEffect(() => {
-        if (dataLoader?.token) {
-            navigate(ROUTES.TRANSACTIONS)
-        } else if (dataLoader?.message) {
-            setError(dataLoader.message)
-        }
-    }, [dataLoader, navigate])
+export default function SignInForm({error}: Props) {
 
     return <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>

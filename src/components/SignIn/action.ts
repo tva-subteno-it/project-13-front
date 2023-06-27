@@ -1,5 +1,6 @@
-export default async function signInFormAction({params, request}: {request: Request, params: any}) {
+export default async function signInFormAction({request}: {request: Request}) {
     const body = await request.formData();
+    const {remember : rememberMe} = Object.fromEntries(body)
     const data = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
         body: JSON.stringify(Object.fromEntries(body)),
@@ -17,7 +18,7 @@ export default async function signInFormAction({params, request}: {request: Requ
     });
 
     if (data?.body) {
-        return data.body
+        return {...data.body, rememberMe}
     } else {
         return data
     }
