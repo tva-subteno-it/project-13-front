@@ -70,6 +70,19 @@ export const ROUTES = {
     TRANSACTIONS: '/profile',
 }
 
+export const CATEGORIES = [
+    'Food',
+    'Transportation',
+    'Entertainment',
+    'Shopping',
+    'Housing',
+    'Utilities',
+    'Insurance',
+    'Healthcare',
+    'Investment',
+    'Miscellaneous'
+]
+
 export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
     {
         parent_id: 1,

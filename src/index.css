@@ -368,6 +368,28 @@ h3{
     font-size: 1.1rem;
 }
 
+.button-clean{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6a5d86;
+    font-size: 1.1rem;
+    margin: .3rem;
+}
+
+.button-save{
+    color: #00bb77;
+}
+
+.button-cancel{
+    color: #ff6767;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
 @media (min-width: 720px) {
     .account {
         flex-direction: row;
