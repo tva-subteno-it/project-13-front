@@ -2,22 +2,20 @@ import {Link, useNavigate} from "react-router-dom";
 import argentBankLogo from "../../assets/argentBankLogo.png"
 import {ROUTES} from "../../constants";
 import {useDispatch, useSelector} from "react-redux";
-import {setIsConnected} from "../../features/root/rootSlice.ts";
-import {setJwt} from "../../features/user/userSlice.ts";
+import {disconnect} from "../../features/user/userSlice.ts";
 import {MouseEvent} from "react";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 
 export default function Nav() {
     const navigate = useNavigate()
     const dispatch = useDispatch<AppDispatch>();
-    const isConnected = useSelector((state: RootState) => state.root.isConnected)
-    const {jwt, rememberMe} = useSelector((state: RootState) => state.user)
+    const isConnected = useSelector((state: RootState) => state.user.isConnected)
+    const {token, rememberMe} = useSelector((state: RootState) => state.user)
 
     const handleDisconnect = (e: MouseEvent<HTMLAnchorElement>, isHomeButton=false) => {
         e.preventDefault();
         if (!isHomeButton || (isHomeButton && rememberMe !== 'on')) {
-            dispatch(setIsConnected(false));
-            dispatch(setJwt({jwt: '', rememberMe: undefined}));
+            dispatch(disconnect());
         }
         navigate(ROUTES.HOME);
     }
@@ -33,7 +31,7 @@ export default function Nav() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
             <div>
-                <Link className="main-nav-item" to={isConnected && jwt || (!isConnected && jwt && rememberMe) ? ROUTES.TRANSACTIONS :ROUTES.LOGIN}>
+                <Link className="main-nav-item" to={isConnected && token || (!isConnected && token && rememberMe) ? ROUTES.TRANSACTIONS :ROUTES.LOGIN}>
                     <i className="fa fa-user-circle"></i>
                     &nbsp;{!isConnected ? "Sign In" : "Tony"}
                 </Link>

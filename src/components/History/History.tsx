@@ -1,8 +1,14 @@
-import {ACCOUNTS, TRANSACTIONS} from "../../constants";
+import {ACCOUNTS, ROUTES, TRANSACTIONS} from "../../constants";
 import {HistoryTab} from "./HistoryTab.tsx";
 import {Balance} from "./Balance.tsx";
+import {Navigate, useParams} from "react-router-dom";
 
-export default function History({id}: {id:string}) {
+export default function History() {
+    const {id} = useParams()
+    console.log(id)
+    if (!id) {
+        return <Navigate to={ROUTES.TRANSACTIONS}/>
+    }
     const history = TRANSACTIONS.find(transaction => transaction.parent_id === +id)?.history
     const account = ACCOUNTS.find(account=> account.id === +id)
     if (account){
