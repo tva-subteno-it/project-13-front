@@ -68,6 +68,7 @@ export const ROUTES = {
     LOGIN: '/login',
     SIGNUP: '/signup',
     TRANSACTIONS: '/profile',
+    TRANSACTIONS_ID: '/profile/:id',
 }
 
 export const CATEGORIES = [

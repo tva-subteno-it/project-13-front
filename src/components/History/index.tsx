@@ -19,7 +19,7 @@ export default function Transaction({ title, number_of_transactions, balance, cu
             <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-            <Link className="transaction-button" to={`${ROUTES.TRANSACTIONS}?id=${id}`}>View transactions</Link>
+            <Link className="transaction-button" to={`${ROUTES.TRANSACTIONS}/${id}`}>View transactions</Link>
         </div>
     </section>
 }
