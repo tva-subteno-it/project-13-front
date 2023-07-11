@@ -4,13 +4,17 @@ import type {PayloadAction} from "@reduxjs/toolkit";
 export interface UserState {
     token: string | null,
     rememberMe?: 'on',
-    isConnected: boolean
+    isConnected: boolean,
+    error: string | null,
+    isLoading: boolean
 }
 
 const initialState: UserState = {
     token: null,
     rememberMe: undefined,
-    isConnected: false
+    isConnected: false,
+    error: null,
+    isLoading: false
 }
 
 export const signInAction = createAsyncThunk(
@@ -32,6 +36,21 @@ export const signInAction = createAsyncThunk(
     }
 )
 
+export const loginWithToken = createAsyncThunk(
+    'user/loginWithToken',
+    async (token: string) => {
+        const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        console.log(response)
+        return response.status === 200
+    }
+)
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -45,21 +64,46 @@ export const userSlice = createSlice({
             state.rememberMe = undefined
             state.isConnected = false
         },
+        setFormError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(signInAction.fulfilled, (state, action: PayloadAction<UserState>) => {
             state.token = action.payload.token
             state.rememberMe = action.payload.rememberMe
             state.isConnected = true
+            state.error = null
+            state.isLoading = false
+            if (action.payload.rememberMe) {
+                window.localStorage.setItem('token', action.payload.token as string)
+            } else {
+                window.localStorage.removeItem('token')
+            }
         })
         builder.addCase(signInAction.rejected, (state) => {
             state.token = null
             state.rememberMe = undefined
             state.isConnected = false
+            state.error = 'Email ou mot de passe incorrect'
+            state.isLoading = false
+        })
+        builder.addCase(signInAction.pending, (state) => {
+            state.isLoading = true
+        })
+        builder.addCase(loginWithToken.fulfilled, (state) => {
+            state.isConnected = true
+        })
+        builder.addCase(loginWithToken.rejected, (state) => {
+            state.token = null
+            state.rememberMe = undefined
+            state.isConnected = false
+            state.error = null
+            state.isLoading = false
         })
     }
 })
 
-export const {setToken, disconnect} = userSlice.actions
+export const {setToken, disconnect, setFormError} = userSlice.actions
 
 export default userSlice.reducer
