@@ -6,7 +6,8 @@ export interface UserState {
     rememberMe?: 'on',
     isConnected: boolean,
     error: string | null,
-    isLoading: boolean
+    isLoading: boolean,
+    isWrongToken: boolean
 }
 
 const initialState: UserState = {
@@ -14,7 +15,8 @@ const initialState: UserState = {
     rememberMe: undefined,
     isConnected: false,
     error: null,
-    isLoading: false
+    isLoading: false,
+    isWrongToken: false
 }
 
 export const signInAction = createAsyncThunk(
@@ -47,7 +49,11 @@ export const loginWithToken = createAsyncThunk(
             }
         })
         console.log(response)
-        return response.status === 200
+        if (response.ok){
+            return true
+        } else{
+            throw new Error('Invalid token')
+        }
     }
 )
 
@@ -93,13 +99,23 @@ export const userSlice = createSlice({
         })
         builder.addCase(loginWithToken.fulfilled, (state) => {
             state.isConnected = true
+            state.isLoading = false
+            state.isWrongToken = false
+            console.log('fulfilled')
         })
         builder.addCase(loginWithToken.rejected, (state) => {
+            console.log('rejected')
             state.token = null
             state.rememberMe = undefined
             state.isConnected = false
             state.error = null
             state.isLoading = false
+            state.isWrongToken = true
+        })
+        builder.addCase(loginWithToken.pending, (state) => {
+            console.log('pending')
+            state.isLoading = true
+            state.isWrongToken = false
         })
     }
 })
