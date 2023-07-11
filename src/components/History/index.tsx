@@ -1,16 +1,7 @@
-import {ROUTES, SYMBOLS} from "../../constants";
+import {ROUTES, SYMBOLS, ACCOUNTS} from "../../constants";
 import {Link} from "react-router-dom";
 
-interface TransactionProps {
-    title: string,
-    number_of_transactions: number,
-    balance: number,
-    currency: string,
-    description: string,
-    id: number
-}
-
-export default function Transaction({ title, number_of_transactions, balance, currency, description, id }: TransactionProps) {
+export default function Transaction({ title, number_of_transactions, balance, currency, description, id }: typeof ACCOUNTS[0]) {
     const symbol = SYMBOLS[currency];
     return <section className="account">
         <div className="account-content-wrapper">
