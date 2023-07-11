@@ -21,7 +21,7 @@ export default function Protected({children}: {children: React.JSX.Element}){
         }
     }, [])
 
-    if (isLoading ||(!isLoading && !isConnected && token && !isWrongToken)){
+    if (isLoading ||(!isConnected && token && !isWrongToken)){
         return <p>Loading...</p>
     }
     if (isConnected) {

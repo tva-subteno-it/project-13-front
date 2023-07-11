@@ -50,7 +50,7 @@ export const loginWithToken = createAsyncThunk(
         })
         console.log(response)
         if (response.ok){
-            return true
+            return token
         } else{
             throw new Error('Invalid token')
         }
@@ -97,10 +97,12 @@ export const userSlice = createSlice({
         builder.addCase(signInAction.pending, (state) => {
             state.isLoading = true
         })
-        builder.addCase(loginWithToken.fulfilled, (state) => {
+        builder.addCase(loginWithToken.fulfilled, (state, action: PayloadAction<string>) => {
             state.isConnected = true
             state.isLoading = false
             state.isWrongToken = false
+            state.token = action.payload
+            state.rememberMe = 'on'
             console.log('fulfilled')
         })
         builder.addCase(loginWithToken.rejected, (state) => {

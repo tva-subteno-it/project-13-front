@@ -14,7 +14,7 @@ export default function Nav() {
 
     const handleDisconnect = (e: MouseEvent<HTMLAnchorElement>, isHomeButton=false) => {
         e.preventDefault();
-        if (!isHomeButton || (isHomeButton && rememberMe !== 'on')) {
+        if (!isHomeButton || rememberMe !== 'on') {
             dispatch(disconnect());
         }
         navigate(ROUTES.HOME);
