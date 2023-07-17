@@ -10,7 +10,7 @@ export default function Nav() {
     const navigate = useNavigate()
     const dispatch = useDispatch<AppDispatch>();
     const isConnected = useSelector((state: RootState) => state.user.isConnected)
-    const {token, rememberMe} = useSelector((state: RootState) => state.user)
+    const {token, rememberMe, firstName} = useSelector((state: RootState) => state.user)
 
     const handleDisconnect = (e: MouseEvent<HTMLAnchorElement>, isHomeButton=false) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ export default function Nav() {
             <div>
                 <Link className="main-nav-item" to={isConnected && token || (!isConnected && token && rememberMe) ? ROUTES.TRANSACTIONS :ROUTES.LOGIN}>
                     <i className="fa fa-user-circle"></i>
-                    &nbsp;{!isConnected ? "Sign In" : "Tony"}
+                    &nbsp;{!isConnected ? "Sign In" : firstName}
                 </Link>
                 &nbsp;
                 {isConnected && <Link className="main-nav-item" to={ROUTES.HOME} onClick={handleDisconnect}>

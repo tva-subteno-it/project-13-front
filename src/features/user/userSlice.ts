@@ -1,5 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {fetchProfile} from "../../utils/fetchProfile.ts";
+import {editNameAction, signInAction} from "./userAction.tsx";
 
 export interface UserState {
     token: string | null,
@@ -7,7 +10,9 @@ export interface UserState {
     isConnected: boolean,
     error: string | null,
     isLoading: boolean,
-    isWrongToken: boolean
+    isWrongToken: boolean,
+    firstName?: string,
+    lastName?: string,
 }
 
 const initialState: UserState = {
@@ -16,7 +21,9 @@ const initialState: UserState = {
     isConnected: false,
     error: null,
     isLoading: false,
-    isWrongToken: false
+    isWrongToken: false,
+    firstName: undefined,
+    lastName: undefined,
 }
 
 export const signInAction = createAsyncThunk(
@@ -61,10 +68,6 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setToken: (state, action: PayloadAction<UserState>) => {
-            state.token = action.payload.token
-            state.rememberMe = action.payload.rememberMe
-        },
         disconnect: (state) => {
             state.token = null
             state.rememberMe = undefined
@@ -81,6 +84,8 @@ export const userSlice = createSlice({
             state.isConnected = true
             state.error = null
             state.isLoading = false
+            state.firstName = action.payload.firstName
+            state.lastName = action.payload.lastName
             if (action.payload.rememberMe) {
                 window.localStorage.setItem('token', action.payload.token as string)
             } else {
@@ -97,12 +102,14 @@ export const userSlice = createSlice({
         builder.addCase(signInAction.pending, (state) => {
             state.isLoading = true
         })
-        builder.addCase(loginWithToken.fulfilled, (state, action: PayloadAction<string>) => {
+        builder.addCase(loginWithToken.fulfilled, (state, action: PayloadAction<UserState>) => {
             state.isConnected = true
             state.isLoading = false
             state.isWrongToken = false
-            state.token = action.payload
+            state.token = action.payload.token
             state.rememberMe = 'on'
+            state.firstName = action.payload.firstName
+            state.lastName = action.payload.lastName
             console.log('fulfilled')
         })
         builder.addCase(loginWithToken.rejected, (state) => {
