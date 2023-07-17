@@ -1,9 +1,10 @@
 import {FormEvent, useEffect, useState} from "react";
-import {setFormError, signInAction} from "../../features/user/userSlice.ts";
+import {setFormError} from "../../features/user/userSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {useNavigate} from "react-router-dom";
 import {ROUTES} from "../../constants";
+import {signInAction} from "../../features/user/userAction.tsx";
 
 export default function SignInForm() {
     const [email, setEmail] = useState("")
