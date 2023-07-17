@@ -5,7 +5,6 @@ import {Navigate, useParams} from "react-router-dom";
 
 export default function History() {
     const {id} = useParams()
-    console.log(id)
     if (!id) {
         return <Navigate to={ROUTES.TRANSACTIONS}/>
     }

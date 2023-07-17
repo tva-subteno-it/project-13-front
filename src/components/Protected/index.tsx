@@ -11,12 +11,9 @@ export default function Protected({children}: {children: React.JSX.Element}){
     if (!token){
         token = window.localStorage.getItem("token")
     }
-    console.log("isConnected", isConnected)
-    console.log("isLoading", isLoading)
 
     useEffect(() => {
         if (token && !isConnected){
-            console.log("dispatching loginWithToken")
             dispatch(loginWithToken(token))
         }
     }, [])
@@ -27,7 +24,6 @@ export default function Protected({children}: {children: React.JSX.Element}){
     if (isConnected) {
         return children
     } else {
-        console.log("redirecting to login")
         return <Navigate to={ROUTES.LOGIN} />
     }
 }

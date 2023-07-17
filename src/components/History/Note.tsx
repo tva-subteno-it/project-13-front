@@ -12,7 +12,7 @@ export function Notes({history}: Props){
 
     const save = ()=>{
         setIsEditingNotes(false);
-        setNotes(inputRef.current?.value || '');
+        setNotes(inputRef.current?.value ?? '');
     }
 
     if (isEditingNotes) {
