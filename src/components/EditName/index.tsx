@@ -8,9 +8,9 @@ interface EditNameProps {
 
 export function EditName({editing, value, onChange}: EditNameProps) {
     if (!editing) {
-        return <h1>{value}</h1>
+        return <h1 className={"username__title"}>{value}</h1>
     }
-    return <input type="text" value={value} onChange={onChange}/>
+    return <input className={"username__input"} type="text" value={value} onChange={onChange}/>
 }
 
 export {ToggleEditing} from "./toggleEditing.tsx";

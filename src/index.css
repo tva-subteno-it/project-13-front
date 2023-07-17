@@ -390,6 +390,53 @@ h3{
     align-items: center;
 }
 
+.username{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.username__input{
+    padding: 7px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.username__input:focus{
+    border-bottom: 2px solid #00bb77;
+    margin-bottom: -2px;
+}
+
+.username__input:hover:not(:focus){
+    border-bottom: 2px solid rgba(0, 187, 119, 0.53);
+    margin-bottom: -2px;
+}
+
+.username__button{
+    margin: .5rem 0 0;
+    background: white;
+    padding: 5px;
+    border-radius: 3px;
+    width: 10vw;
+    border: 1px solid #ccc;
+    transition: all .3s ease-in-out;
+}
+
+.username__button:hover{
+    filter: brightness(1.1);
+}
+
+.username__button-save{
+    color: #00bb77;
+    border-color: currentColor;
+}
+
+.username__button-cancel{
+    color: #ff6767;
+    border-color: currentColor;
+}
+
 @media (min-width: 720px) {
     .account {
         flex-direction: row;

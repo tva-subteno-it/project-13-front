@@ -8,11 +8,9 @@ export function ToggleEditing({onClick, isEditing, onSave}: ToggleEditingProps) 
     if (!isEditing) {
         return <button className="edit-button" onClick={onClick}>Edit Name</button>
     } else {
-        return <>
-            <button className={"button-clean button-save"} onClick={onSave}><i className="fa fa-check"
-                                                                               aria-hidden="true"></i></button>
-            <button className={"button-clean button-cancel"} onClick={onClick}><i className="fa fa-times"
-                                                                                  aria-hidden="true"></i></button>
-        </>
+        return <div className={"username"}>
+            <button className={"button-clean username__button username__button-save"} onClick={onSave}>Save</button>
+            <button className={"button-clean username__button username__button-cancel"} onClick={onClick}>Cancel</button>
+        </div>
     }
 }

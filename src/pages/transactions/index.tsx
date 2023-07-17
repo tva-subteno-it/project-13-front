@@ -21,8 +21,10 @@ export default function Transactions() {
     return <main className="main bg-dark">
         <div className="header">
             <h1>Welcome back</h1>
-            <EditName editing={isEditing} value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)}/>
-            <EditName editing={isEditing} value={newLastName} onChange={(e) => setNewLastName(e.target.value)}/>
+            <div className={"username"}>
+                <EditName editing={isEditing} value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)}/>
+                <EditName editing={isEditing} value={newLastName} onChange={(e) => setNewLastName(e.target.value)}/>
+            </div>
             <ToggleEditing isEditing={isEditing} onClick={() => setIsEditing(!isEditing)} onSave={handleSave} />
         </div>
         <h2 className="sr-only">Accounts</h2>
