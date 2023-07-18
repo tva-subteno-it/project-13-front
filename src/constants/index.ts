@@ -21,45 +21,6 @@ export const FEATURES = [
     }
 ]
 
-export const ACCOUNTS = [
-    {
-        title: 'Bank savings',
-        number_of_transactions: 7253,
-        balance: 10904.52,
-        currency: 'USD',
-        description: 'Available balance',
-        id: "tKpiu2LxbU",
-        userId: "eyJhbGciOiJIUzI1NiJ9"
-    },
-    {
-        title: 'Credit card',
-        number_of_transactions: 158,
-        balance: -750.28,
-        currency: 'USD',
-        description: 'Outstanding balance',
-        id: "VKimZeVBUP",
-        userId: "eyJhbGciOiJIUzI1NiJ9"
-    },
-    {
-        title: 'Investment portfolio',
-        number_of_transactions: 342,
-        balance: 250000,
-        currency: 'USD',
-        description: 'Total value',
-        id: "10kxSMalyp",
-        userId: "eyJhbGciOiJIUzI1NiJ9"
-    },
-    {
-        title: 'Checking account',
-        number_of_transactions: 1235,
-        balance: 5089.67,
-        currency: 'USD',
-        description: 'Current balance',
-        id: "rHfwwISMHS",
-        userId: "eyJhbGciOiJIUzI1NiJ9"
-    }
-]
-
 export const SYMBOLS: {
     [key: string]: string
 } = {

@@ -76,10 +76,8 @@ export const userSlice = createSlice({
             state.rememberMe = 'on'
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
-            console.log('fulfilled')
         })
         builder.addCase(loginWithToken.rejected, (state) => {
-            console.log('rejected')
             state.token = null
             state.rememberMe = undefined
             state.isConnected = false
@@ -88,7 +86,6 @@ export const userSlice = createSlice({
             state.isWrongToken = true
         })
         builder.addCase(loginWithToken.pending, (state) => {
-            console.log('pending')
             state.isLoading = true
             state.isWrongToken = false
         })

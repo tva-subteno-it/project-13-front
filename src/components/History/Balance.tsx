@@ -1,6 +1,7 @@
-import {ACCOUNTS, SYMBOLS} from "../../constants";
+import {SYMBOLS} from "../../constants";
+import {Account} from "../../@types";
 
-export function Balance({account, historyNumber}: {account: typeof ACCOUNTS[0], historyNumber: number}){
+export function Balance({account, historyNumber}: {account: Account, historyNumber: number}){
     const symbol = SYMBOLS[account.currency];
     return (
         <section className={"balance-section"}>

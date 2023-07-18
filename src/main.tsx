@@ -5,7 +5,7 @@ import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
 import Home from "./pages/home";
 import Root from "./components/Root";
 import SignIn from "./pages/sign-in";
-import Transactions from "./pages/transactions";
+import Profile from "./pages/profile";
 import NotFound from "./pages/404";
 import {ROUTES} from "./constants";
 import {store} from "./redux/store.ts";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: ROUTES.TRANSACTIONS,
-                        element: <Transactions/>,
+                        element: <Profile/>,
                         index: true
                     }
                 ]

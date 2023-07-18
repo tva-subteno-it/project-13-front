@@ -1,7 +1,8 @@
-import {ROUTES, SYMBOLS, ACCOUNTS} from "../../constants";
+import {ROUTES, SYMBOLS} from "../../constants";
+import {Account} from "../../@types";
 import {Link} from "react-router-dom";
 
-export default function Transaction({ title, number_of_transactions, balance, currency, description, id }: typeof ACCOUNTS[0]) {
+export default function Transaction({ title, number_of_transactions, balance, currency, description, _id }: Account) {
     const symbol = SYMBOLS[currency];
     return <section className="account">
         <div className="account-content-wrapper">
@@ -10,7 +11,7 @@ export default function Transaction({ title, number_of_transactions, balance, cu
             <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-            <Link className="transaction-button" to={`${ROUTES.TRANSACTIONS}/${id}`}>View transactions</Link>
+            <Link className="transaction-button" to={`${ROUTES.TRANSACTIONS}/${_id}`}>View transactions</Link>
         </div>
     </section>
 }
