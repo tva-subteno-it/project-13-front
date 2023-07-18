@@ -11,7 +11,7 @@ import {ROUTES} from "./constants";
 import {store} from "./redux/store.ts";
 import {Provider} from "react-redux";
 import Protected from "./components/Protected";
-import History from "./components/History/History.tsx";
+import History from "./pages/history";
 
 const router = createBrowserRouter([
     {

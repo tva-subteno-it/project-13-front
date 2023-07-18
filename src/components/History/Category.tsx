@@ -8,18 +8,18 @@ interface Props {
 
 export function Category({history}: Props){
     const [isEditingCategory, setIsEditingCategory] = useState(false);
-    const [category, setCategory] = useState(history.category);
+    const [category, setCategory] = useState(CATEGORIES[history.category_id]);
     const selectRef = useRef<HTMLSelectElement>(null);
 
     const save = ()=>{
         setIsEditingCategory(false);
-        setCategory(selectRef.current?.value || '');
+        setCategory(selectRef.current?.value ?? '');
     }
 
     if (isEditingCategory) {
         return <>
             <select defaultValue={category} ref={selectRef}>
-                {CATEGORIES.map((category) => <option value={category} key={category}>{category}</option>)}
+                {Object.entries(CATEGORIES).map(([key, value]) => <option defaultValue={key} key={key} selected={key === history.category_id}>{value}</option>)}
             </select>
             <button className={"button-clean button-save"} onClick={save}><i className="fa fa-check" aria-hidden="true"></i></button>
             <button className={"button-clean button-cancel"} onClick={() => setIsEditingCategory(false)}><i className="fa fa-times" aria-hidden="true"></i></button>

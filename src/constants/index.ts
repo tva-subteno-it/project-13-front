@@ -28,7 +28,8 @@ export const ACCOUNTS = [
         balance: 10904.52,
         currency: 'USD',
         description: 'Available balance',
-        id: 1
+        id: "tKpiu2LxbU",
+        userId: "eyJhbGciOiJIUzI1NiJ9"
     },
     {
         title: 'Credit card',
@@ -36,7 +37,8 @@ export const ACCOUNTS = [
         balance: -750.28,
         currency: 'USD',
         description: 'Outstanding balance',
-        id: 2
+        id: "VKimZeVBUP",
+        userId: "eyJhbGciOiJIUzI1NiJ9"
     },
     {
         title: 'Investment portfolio',
@@ -44,7 +46,8 @@ export const ACCOUNTS = [
         balance: 250000,
         currency: 'USD',
         description: 'Total value',
-        id: 3
+        id: "10kxSMalyp",
+        userId: "eyJhbGciOiJIUzI1NiJ9"
     },
     {
         title: 'Checking account',
@@ -52,7 +55,8 @@ export const ACCOUNTS = [
         balance: 5089.67,
         currency: 'USD',
         description: 'Current balance',
-        id: 4
+        id: "rHfwwISMHS",
+        userId: "eyJhbGciOiJIUzI1NiJ9"
     }
 ]
 
@@ -71,22 +75,23 @@ export const ROUTES = {
     TRANSACTIONS_ID: '/profile/:id',
 }
 
-export const CATEGORIES = [
-    'Food',
-    'Transportation',
-    'Entertainment',
-    'Shopping',
-    'Housing',
-    'Utilities',
-    'Insurance',
-    'Healthcare',
-    'Investment',
-    'Miscellaneous'
-]
+export const CATEGORIES: { [key: string]: string } = {
+    'GHNb2uVxC6':' Food',
+    '7J5R5qIYIX': 'Transportation',
+    'XTyQa9k5k7': 'Entertainment',
+    'ko7ZFSIZbM': 'Shopping',
+    'AyX3RYEfPN': 'Housing',
+    'dlJc9ZNHPx': 'Utilities',
+    'sQksEyaIvD': 'Insurance',
+    'ENokPjnkU5': 'Healthcare',
+    'mNHh3du8Oe': 'Investment',
+    'Lyfa6jubhX': 'Miscellaneous'
+}
 
-export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
+export const TRANSACTIONS: {parent_id: string, user_id: string, history: History[]}[] = [
     {
-        parent_id: 1,
+        parent_id: "tKpiu2LxbU",
+        user_id: "eyJhbGciOiJIUzI1NiJ9",
         history: [
             {
                 date: '2020-07-01',
@@ -96,13 +101,14 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'debit',
                 balance: 10904.52,
                 notes: "",
-                category: "",
+                category_id: "GHNb2uVxC6",
                 transactionType: "Electronic"
             }
         ]
     },
     {
-        parent_id: 2,
+        parent_id: "VKimZeVBUP",
+        user_id: "eyJhbGciOiJIUzI1NiJ9",
         history: [
             {
                 date: '2021-02-15',
@@ -112,7 +118,7 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'debit',
                 balance: -750.28,
                 notes: "",
-                category: "",
+                category_id: "ENokPjnkU5",
                 transactionType: "Electronic"
             },
             {
@@ -123,13 +129,14 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'credit',
                 balance: 1750.28,
                 notes: "",
-                category: "",
+                category_id: "",
                 transactionType: "Electronic"
             }
         ]
     },
     {
-        parent_id: 3,
+        parent_id: "10kxSMalyp",
+        user_id: "eyJhbGciOiJIUzI1NiJ9",
         history: [
             {
                 date: '2022-09-10',
@@ -139,7 +146,7 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'debit',
                 balance: 249924.75,
                 notes: "",
-                category: "",
+                category_id: "",
                 transactionType: "Electronic"
             },
             {
@@ -150,7 +157,7 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'credit',
                 balance: 249974.75,
                 notes: "",
-                category: "",
+                category_id: "Lyfa6jubhX",
                 transactionType: "Electronic"
             },
             {
@@ -161,7 +168,7 @@ export const TRANSACTIONS: {parent_id: number, history: History[]}[] = [
                 type: 'debit',
                 balance: 249875.76,
                 notes: "",
-                category: "",
+                category_id: "7J5R5qIYIX",
                 transactionType: "Electronic"
             }
         ]

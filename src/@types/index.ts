@@ -6,6 +6,6 @@ export interface History {
     type: "debit" | "credit";
     balance: number;
     notes: string;
-    category: string;
+    category_id: string;
     transactionType: string;
 }
