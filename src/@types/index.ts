@@ -1,3 +1,10 @@
+export interface HistoryBody {
+    _id: string;
+    parent_id: string;
+    user_id: string;
+    history: History[];
+}
+
 export interface History {
     date: string;
     description: string;
@@ -8,6 +15,13 @@ export interface History {
     notes: string;
     category_id: string;
     transactionType: string;
+}
+
+export interface Transaction {
+    _id: string;
+    parent_id: string;
+    user_id: string;
+    history: History[];
 }
 
 export interface Account {

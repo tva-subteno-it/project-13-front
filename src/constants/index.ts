@@ -1,7 +1,6 @@
 import chat from '../assets/icon-chat.png'
 import money from '../assets/icon-money.png'
 import security from '../assets/icon-security.png'
-import { History } from '../@types'
 
 export const FEATURES = [
     {
@@ -48,90 +47,3 @@ export const CATEGORIES: { [key: string]: string } = {
     'mNHh3du8Oe': 'Investment',
     'Lyfa6jubhX': 'Miscellaneous'
 }
-
-export const TRANSACTIONS: {parent_id: string, user_id: string, history: History[]}[] = [
-    {
-        parent_id: "tKpiu2LxbU",
-        user_id: "eyJhbGciOiJIUzI1NiJ9",
-        history: [
-            {
-                date: '2020-07-01',
-                description: 'Netflix',
-                amount: 12.99,
-                currency: 'USD',
-                type: 'debit',
-                balance: 10904.52,
-                notes: "",
-                category_id: "GHNb2uVxC6",
-                transactionType: "Electronic"
-            }
-        ]
-    },
-    {
-        parent_id: "VKimZeVBUP",
-        user_id: "eyJhbGciOiJIUzI1NiJ9",
-        history: [
-            {
-                date: '2021-02-15',
-                description: 'Amazon',
-                amount: 43.78,
-                currency: 'USD',
-                type: 'debit',
-                balance: -750.28,
-                notes: "",
-                category_id: "ENokPjnkU5",
-                transactionType: "Electronic"
-            },
-            {
-                date: '2021-02-22',
-                description: 'Salary',
-                amount: 2500,
-                currency: 'USD',
-                type: 'credit',
-                balance: 1750.28,
-                notes: "",
-                category_id: "",
-                transactionType: "Electronic"
-            }
-        ]
-    },
-    {
-        parent_id: "10kxSMalyp",
-        user_id: "eyJhbGciOiJIUzI1NiJ9",
-        history: [
-            {
-                date: '2022-09-10',
-                description: 'Restaurant',
-                amount: 75.25,
-                currency: 'USD',
-                type: 'debit',
-                balance: 249924.75,
-                notes: "",
-                category_id: "",
-                transactionType: "Electronic"
-            },
-            {
-                date: '2022-09-15',
-                description: 'Refund',
-                amount: 50,
-                currency: 'USD',
-                type: 'credit',
-                balance: 249974.75,
-                notes: "",
-                category_id: "Lyfa6jubhX",
-                transactionType: "Electronic"
-            },
-            {
-                date: '2022-09-30',
-                description: 'Groceries',
-                amount: 98.99,
-                currency: 'USD',
-                type: 'debit',
-                balance: 249875.76,
-                notes: "",
-                category_id: "7J5R5qIYIX",
-                transactionType: "Electronic"
-            }
-        ]
-    }
-]

@@ -35,6 +35,6 @@ export default function Profile() {
             <ToggleEditing isEditing={isEditing} onClick={() => setIsEditing(!isEditing)} onSave={handleSave} />
         </div>
         <h2 className="sr-only">Accounts</h2>
-        {accounts.account.map(data => <Transaction {...data} key={data._id}/>)}
+        {accounts.accounts.map(data => <Transaction {...data} key={data._id}/>)}
     </main>
 }
