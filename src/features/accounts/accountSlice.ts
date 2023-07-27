@@ -2,7 +2,7 @@ import type {PayloadAction} from "@reduxjs/toolkit";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {Account, Transaction} from "../../@types";
 
-interface initialState {
+interface InitialState {
     accounts: Account[],
     transactions: Transaction | undefined,
     categories: {
@@ -11,7 +11,7 @@ interface initialState {
     }[],
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
     accounts: [],
     transactions: undefined,
     categories: [],
@@ -69,6 +69,27 @@ export const getCategories = createAsyncThunk(
     }
 )
 
+export const setCategory = createAsyncThunk(
+    'account/setCategory',
+    async ({token, transaction_id, category_id}: {token: string, transaction_id:string, category_id: string}): Promise<Transaction> => {
+        const response = await fetch('http://localhost:3001/api/v1/account/transactions/categories', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                transaction_id,
+                category_id
+            })
+        })
+        if (response.ok) {
+            return await response.json().then((data) => data.body)
+        } else {
+            return Promise.reject(await response.json())
+        }
+    })
+
 export const accountSlice = createSlice({
     name: 'account',
     initialState,
@@ -82,6 +103,9 @@ export const accountSlice = createSlice({
         })
         builder.addCase(getCategories.fulfilled, (state, action: PayloadAction<{_id: string, name: string}[]>) => {
             state.categories = action.payload
+        })
+        builder.addCase(setCategory.fulfilled, (state, action: PayloadAction<Transaction>) => {
+            state.transactions = action.payload
         })
     }
 })

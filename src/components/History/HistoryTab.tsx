@@ -5,7 +5,7 @@ import {useState} from "react";
 import {ExpandedHistory} from "./ExpandedHistory.tsx";
 
 
-export function HistoryTab({history}: {history : History}){
+export function HistoryTab({history, index}: {history : History, index: number}){
     const symbol = SYMBOLS[history.currency];
     const date = formatDate(history.date)
     const [isExpanded, setIsExpanded] = useState(false)
@@ -23,7 +23,7 @@ export function HistoryTab({history}: {history : History}){
                 <p className="history-amount">{symbol}{history.amount.toLocaleString("fr-FR")}</p>
                 <p className="history-balance">{symbol}{history.balance.toLocaleString("fr-FR")}</p>
             </div>
-            {isExpanded && <ExpandedHistory history={history}/>}
+            {isExpanded && <ExpandedHistory index={index} history={history}/>}
         </>
     )
 }

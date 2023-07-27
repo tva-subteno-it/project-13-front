@@ -59,7 +59,7 @@ export default function History() {
                     <h4>Amount</h4>
                     <h4>Balance</h4>
                 </div>
-                {history?.map((h) => <HistoryTab history={h} key={`${h.date}${h.amount}`}/> )}
+                {history?.map((h, i) => <HistoryTab index={i} history={h} key={`${h.date}${h.amount}`}/> )}
             </section>
         </main>
     }

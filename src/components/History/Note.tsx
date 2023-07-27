@@ -3,9 +3,10 @@ import {History} from "../../@types";
 
 interface Props {
     history : History;
+    index: number;
 }
 
-export function Notes({history}: Props){
+export function Notes({history, index}: Props){
     const [notes, setNotes] = useState(history.notes);
     const [isEditingNotes, setIsEditingNotes] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);

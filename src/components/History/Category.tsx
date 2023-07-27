@@ -5,10 +5,11 @@ import {AppDispatch, RootState} from "../../redux/store.ts";
 import {getCategories} from "../../features/accounts/accountSlice.ts";
 
 interface Props {
-    history : History
+    history : History;
+    index: number;
 }
 
-export function Category({history}: Props){
+export function Category({history, index}: Props){
     const {categories} = useSelector((state: RootState) => state.accounts);
     const dispatch = useDispatch<AppDispatch>()
     const [isEditingCategory, setIsEditingCategory] = useState(false);
