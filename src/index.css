@@ -401,6 +401,7 @@ h3{
     border-radius: 3px;
     outline: none;
     border: 1px solid #ccc;
+    width: min(230px, 40vw);
 }
 
 h1.username__title{
@@ -439,6 +440,12 @@ h1.username__title{
 .username__button-cancel{
     color: #ff6767;
     border-color: currentColor;
+}
+
+@media screen and (max-width: 700px) {
+    .username__button{
+        width: 20vw;
+    }
 }
 
 @media (min-width: 720px) {
