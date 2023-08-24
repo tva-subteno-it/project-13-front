@@ -38,6 +38,7 @@ export const userSlice = createSlice({
             state.token = null
             state.rememberMe = undefined
             state.isConnected = false
+            window.localStorage.removeItem('token')
         },
         setFormError: (state, action: PayloadAction<string>) => {
             state.error = action.payload
